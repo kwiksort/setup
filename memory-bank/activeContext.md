@@ -26,3 +26,4 @@
 - Fixed MX Keys Ctrl+C behavior in terminal apps by correcting Karabiner app exclusion bundle ID from typo `com.ghotty.*` to exact `com.mitchellh.ghostty` in `config/karabiner/karabiner.json`.
 - Added MX Keys Ctrl+Z terminal passthrough behavior by ensuring `Ctrl+Z -> Cmd+Z` remap is excluded in Ghostty and Terminal via `frontmost_application_unless` conditions in `config/karabiner/karabiner.json`.
 - `setup.sh` now enforces terminal-safe Ctrl+C/Ctrl+Z Karabiner conditions post-copy using an inline Python patch step against `~/.config/karabiner/karabiner.json` (idempotent cleanup of typo `com.ghotty.*` included).
+- Added browser refresh mapping in `config/karabiner/karabiner.json`: `f5` now sends `command+r` for the MX Keys FR-PC device rule set.

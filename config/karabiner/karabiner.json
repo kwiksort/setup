@@ -618,6 +618,33 @@
                         ]
                     },
                     {
+                        "description": "[MX Keys FR-PC] F5 => Cmd+R (refresh)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "is_keyboard": true,
+                                                "product_id": 50475,
+                                                "vendor_id": 1133
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "key_code": "f5" },
+                                "to": [
+                                    {
+                                        "key_code": "r",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "[MX Keys FR-PC] Swap left command with left option (put last)",
                         "manipulators": [
                             {

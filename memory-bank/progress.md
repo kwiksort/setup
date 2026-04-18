@@ -37,3 +37,4 @@
 - 2026-04-18: Fixed Ghostty Ctrl+C passthrough in `config/karabiner/karabiner.json` by correcting terminal exclusion bundle identifier from `com.ghotty.*` typo to `com.mitchellh.ghostty`.
 - 2026-04-18: Added Ctrl+Z terminal passthrough guard for MX Keys remaps in `config/karabiner/karabiner.json` by excluding Ghostty and Terminal from `Ctrl+Z -> Cmd+Z` conversion.
 - 2026-04-18: Updated `setup.sh` to enforce Ghostty/Terminal exceptions for both Ctrl+C and Ctrl+Z in Karabiner config after copy, including cleanup of legacy `com.ghotty.*` typo pattern.
+- 2026-04-18: Added MX Keys browser refresh shortcut in `config/karabiner/karabiner.json` mapping `f5` to `command+r`.
