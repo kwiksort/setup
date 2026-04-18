@@ -9,9 +9,9 @@ Primary operator is a developer maintaining a personal macOS environment and reu
 2. **Terminal baseline setup**
    - Ensure Starship is installed and initialized in `~/.zshrc` from `setup.sh` and `config/starship/starship.toml`.
 3. **Keyboard behavior standardization**
-   - Use `config/karabiner/karabiner.json` and/or `config/karabiner/mx_keys_fr_pc_rules.json` for MX Keys FR-PC mappings on macOS.
+   - Use `config/karabiner/karabiner.json` for MX Keys FR-PC mappings on macOS.
 4. **VS Code shortcuts alignment**
-   - `setup.sh` copies `config/VSCode/keybindings.json` to VS Code user settings path automatically to align keybindings with Windows muscle memory.
+   - `setup.sh` copies `config/vscode/keybindings.json` to VS Code user settings path automatically to align keybindings with Windows muscle memory.
 5. **Config synchronization**
    - Keep repo-stored configs as source of truth; copy/apply them when rebuilding or refining setup.
 

@@ -25,26 +25,8 @@ brew install --cask \
     stats \
     visual-studio-code
 
-# Setup Karabiner complex modifications
-KARABINER_RULES_SRC="config/karabiner/mx_keys_fr_pc_rules.json"
-KARABINER_RULES_DIR="$HOME/.config/karabiner/assets/complex_modifications"
-KARABINER_RULES_DEST="$KARABINER_RULES_DIR/mx_keys_fr_pc_rules.json"
-
-mkdir -p "$KARABINER_RULES_DIR"
-
-if [ -f "$KARABINER_RULES_DEST" ] && cmp -s "$KARABINER_RULES_SRC" "$KARABINER_RULES_DEST"; then
-  echo "Karabiner rule file already up to date. Skipping copy."
-else
-  if [ -f "$KARABINER_RULES_DEST" ]; then
-    KARABINER_BACKUP_PATH="${KARABINER_RULES_DEST}.backup.$(date +%Y%m%d-%H%M%S)"
-    cp "$KARABINER_RULES_DEST" "$KARABINER_BACKUP_PATH"
-    echo "Karabiner rules backup created: $KARABINER_BACKUP_PATH"
-  fi
-
-  cp "$KARABINER_RULES_SRC" "$KARABINER_RULES_DEST"
-  echo "Installed Karabiner rules to: $KARABINER_RULES_DEST"
-  echo "Enable '[MX Keys FR-PC]' rules from Karabiner-Elements > Complex Modifications if needed."
-fi
+# Setup Karabiner
+cp config/karabiner/karabiner.json $HOME/.config/karabiner/karabiner.json
 
 # Setup VS Code keybindings
 VSCODE_KEYBINDINGS_SRC="config/VSCode/keybindings.json"

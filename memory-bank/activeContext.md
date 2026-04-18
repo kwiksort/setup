@@ -20,6 +20,6 @@
 - Automation is centered on macOS and shell scripting; there is no app codebase with classes/functions in typed languages.
 - `setup.sh` includes several idempotency checks (Starship init line, alias guard, font install guard, Ghostty config existence guard).
 - Homebrew cask selection in `setup.sh` now uses `mos` (replacing `mac-mouse-fix`).
-- `setup.sh` now deploys `config/karabiner/mx_keys_fr_pc_rules.json` into Karabiner complex modifications path with backup-on-change behavior.
-- `setup.sh` now applies VS Code keybindings by copying `config/VSCode/keybindings.json` to `${HOME}/Library/Application Support/Code/User/keybindings.json` with backup-on-change behavior.
-- `config/karabiner/mx_keys_fr_pc_rules.json` now includes MX Keys function/utility mappings: F6/F7 keyboard backlight down/up, F8/F9/F10 media previous/play-next, Calculator key opening Calculator app, and Print Screen triggering macOS selected-area screenshot (Cmd+Shift+4).
+- `setup.sh` now applies Karabiner config by directly copying `config/karabiner/karabiner.json` to `$HOME/.config/karabiner/karabiner.json`.
+- `config/karabiner/mx_keys_fr_pc_rules.json` was removed from the repository and is no longer referenced by `setup.sh`.
+- `setup.sh` applies VS Code keybindings with backup/skip logic, but currently references `config/VSCode/keybindings.json` while the repo path is `config/vscode/keybindings.json` (case-sensitive portability risk).

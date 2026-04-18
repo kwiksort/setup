@@ -2,7 +2,7 @@
 
 ## Languages & Formats
 - **Bash**: orchestration script (`setup.sh`).
-- **JSON**: Karabiner config/rules (`config/karabiner/*.json`) and VS Code keybindings source (`config/VSCode/keybindings.json`).
+- **JSON**: Karabiner config (`config/karabiner/karabiner.json`) and VS Code keybindings source (`config/vscode/keybindings.json`).
 - **TOML**: Starship config (`config/starship/starship.toml`).
 - **Ghostty config format**: key/value settings in `config/ghostty/config`.
 - **Markdown**: project memory-bank and planning docs.
@@ -17,7 +17,7 @@
 - macOS-only file paths are embedded:
   - `~/Library/Application Support/com.mitchellh.ghostty/config`
   - `${HOME}/Library/Application Support/Code/User/keybindings.json`
-  - `${HOME}/.config/karabiner/assets/complex_modifications/mx_keys_fr_pc_rules.json`
+  - `${HOME}/.config/karabiner/karabiner.json`
 - Shell customization targets `~/.zshrc`.
 - App selection and keyboard remapping assumptions are macOS app ecosystem specific.
 
@@ -33,3 +33,4 @@
 - No CI checks for shell linting, JSON validation, or config drift detection.
 - `setup.sh` uses `#!/bin/bash` with `~` in paths; behavior is standard on macOS but not portability-oriented.
 - No explicit rollback strategy for failed mid-run installation steps.
+- `setup.sh` currently references `config/VSCode/keybindings.json` while repository path is `config/vscode/keybindings.json`; this works on case-insensitive default macOS filesystems but is not case-portable.

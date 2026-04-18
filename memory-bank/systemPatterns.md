@@ -11,13 +11,11 @@ This is intentionally lightweight and easy to run manually without additional or
 - Source-of-truth configs are kept in repo subdirectories:
   - `config/ghostty/config`
   - `config/karabiner/karabiner.json`
-  - `config/karabiner/mx_keys_fr_pc_rules.json`
   - `config/starship/starship.toml`
-  - `config/VSCode/keybindings.json`
+  - `config/vscode/keybindings.json`
 - Runtime user files are created/copied into macOS home library paths by scripts.
-- `setup.sh` deploys `config/karabiner/mx_keys_fr_pc_rules.json` to
-  `~/.config/karabiner/assets/complex_modifications/mx_keys_fr_pc_rules.json`.
-- `setup.sh` copies `config/VSCode/keybindings.json` into `${HOME}/Library/Application Support/Code/User/keybindings.json` with backup support.
+- `setup.sh` copies `config/karabiner/karabiner.json` to `~/.config/karabiner/karabiner.json`.
+- `setup.sh` copies `config/vscode/keybindings.json` into `${HOME}/Library/Application Support/Code/User/keybindings.json` with backup support.
 
 ## Idempotency Pattern
 `setup.sh` follows defensive checks before mutating state:
@@ -26,7 +24,10 @@ This is intentionally lightweight and easy to run manually without additional or
 - Uses `grep -Fxq` before appending lines to `~/.zshrc` (`eval "$(starship init zsh)"`, alias `ll`).
 - Checks font directory and existing `.ttf` files before re-downloading.
 - Checks Ghostty config path existence before copying default config.
-- Compares Karabiner rules source/destination with `cmp -s`, skips when identical, and creates timestamped backup before overwriting changes.
+- Compares VS Code keybindings source/destination with `cmp -s`, skips when identical, and creates timestamped backup before overwriting changes.
+
+Non-idempotent/more direct areas:
+- Karabiner config copy is currently unconditional (`cp config/karabiner/karabiner.json $HOME/.config/karabiner/karabiner.json`) and has no backup/skip guard.
 
 Partial non-idempotent areas remain by design:
 - When Homebrew already exists, script still runs `brew update && brew upgrade`.
