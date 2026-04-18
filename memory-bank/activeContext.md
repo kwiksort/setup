@@ -1,0 +1,25 @@
+# Active Context
+
+## Current Snapshot
+- Cline initialization is complete for this repository.
+- Foundational docs exist: `implementation_plan.md`, `.clinerules`, and `memory-bank/README.md`.
+- Standard memory-bank files are populated from current repository state (`setup.sh` and `config/*`).
+
+## Open Decisions
+- Whether to add a dedicated `Brewfile` and split install declarations out of `setup.sh`.
+- Whether to make Ghostty config sync opt-in overwrite (instead of copy-on-missing behavior only).
+- Whether to keep full Karabiner profile (`config/karabiner/karabiner.json`) as source of truth or generate from modular rules.
+
+## Immediate Next Actions
+1. Keep this file and `memory-bank/progress.md` updated after each meaningful repository change.
+2. Decide whether to introduce a `Brewfile` and optional validation tooling.
+3. Revisit config synchronization strategy for Ghostty and Karabiner modularization.
+
+## Recent Discoveries
+- Repository has no existing README/docs besides configs and scripts.
+- Automation is centered on macOS and shell scripting; there is no app codebase with classes/functions in typed languages.
+- `setup.sh` includes several idempotency checks (Starship init line, alias guard, font install guard, Ghostty config existence guard).
+- Homebrew cask selection in `setup.sh` now uses `mos` (replacing `mac-mouse-fix`).
+- `setup.sh` now deploys `config/karabiner/mx_keys_fr_pc_rules.json` into Karabiner complex modifications path with backup-on-change behavior.
+- `setup.sh` now applies VS Code keybindings by copying `config/VSCode/keybindings.json` to `${HOME}/Library/Application Support/Code/User/keybindings.json` with backup-on-change behavior.
+- `config/karabiner/mx_keys_fr_pc_rules.json` now includes MX Keys function/utility mappings: F6/F7 keyboard backlight down/up, F8/F9/F10 media previous/play-next, Calculator key opening Calculator app, and Print Screen triggering macOS selected-area screenshot (Cmd+Shift+4).

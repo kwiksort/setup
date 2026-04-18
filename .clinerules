@@ -1,0 +1,23 @@
+# Cline Rules for this Repository
+
+## Session start behavior
+- At the start of every task, read these files before planning or editing:
+  - `memory-bank/projectbrief.md`
+  - `memory-bank/productContext.md`
+  - `memory-bank/systemPatterns.md`
+  - `memory-bank/techContext.md`
+  - `memory-bank/activeContext.md`
+  - `memory-bank/progress.md`
+
+## Memory-bank maintenance
+- After any meaningful change, update `memory-bank/activeContext.md` and `memory-bank/progress.md`.
+- If project goals/scope change, update `memory-bank/projectbrief.md`.
+- If workflows or user expectations change, update `memory-bank/productContext.md`.
+- If architecture/patterns change, update `memory-bank/systemPatterns.md`.
+- If tools/platform/dependencies change, update `memory-bank/techContext.md`.
+
+## Documentation quality rules
+- Keep entries specific to this repo (no generic placeholders).
+- Reference exact file paths when describing behavior.
+- Prefer concise, factual updates over long narrative text.
+- Preserve macOS-focused context and script idempotency assumptions.
