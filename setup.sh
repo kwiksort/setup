@@ -23,6 +23,7 @@ brew install --cask \
     karabiner-elements \
     mos \
     stats \
+    thaw \
     visual-studio-code
 
 # Setup Karabiner
