@@ -34,3 +34,6 @@
 - 2026-04-18: Simplified Karabiner setup in `setup.sh` to direct copy of `config/karabiner/karabiner.json` to `${HOME}/.config/karabiner/karabiner.json`.
 - 2026-04-18: Removed `config/karabiner/mx_keys_fr_pc_rules.json` from repository and aligned memory-bank docs to the new single-file Karabiner workflow.
 - 2026-04-18: Documented VS Code path casing mismatch (`config/VSCode` vs `config/vscode`) as a macOS case-insensitive compatibility caveat.
+- 2026-04-18: Fixed Ghostty Ctrl+C passthrough in `config/karabiner/karabiner.json` by correcting terminal exclusion bundle identifier from `com.ghotty.*` typo to `com.mitchellh.ghostty`.
+- 2026-04-18: Added Ctrl+Z terminal passthrough guard for MX Keys remaps in `config/karabiner/karabiner.json` by excluding Ghostty and Terminal from `Ctrl+Z -> Cmd+Z` conversion.
+- 2026-04-18: Updated `setup.sh` to enforce Ghostty/Terminal exceptions for both Ctrl+C and Ctrl+Z in Karabiner config after copy, including cleanup of legacy `com.ghotty.*` typo pattern.

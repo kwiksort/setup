@@ -23,3 +23,6 @@
 - `setup.sh` now applies Karabiner config by directly copying `config/karabiner/karabiner.json` to `$HOME/.config/karabiner/karabiner.json`.
 - `config/karabiner/mx_keys_fr_pc_rules.json` was removed from the repository and is no longer referenced by `setup.sh`.
 - `setup.sh` applies VS Code keybindings with backup/skip logic, but currently references `config/VSCode/keybindings.json` while the repo path is `config/vscode/keybindings.json` (case-sensitive portability risk).
+- Fixed MX Keys Ctrl+C behavior in terminal apps by correcting Karabiner app exclusion bundle ID from typo `com.ghotty.*` to exact `com.mitchellh.ghostty` in `config/karabiner/karabiner.json`.
+- Added MX Keys Ctrl+Z terminal passthrough behavior by ensuring `Ctrl+Z -> Cmd+Z` remap is excluded in Ghostty and Terminal via `frontmost_application_unless` conditions in `config/karabiner/karabiner.json`.
+- `setup.sh` now enforces terminal-safe Ctrl+C/Ctrl+Z Karabiner conditions post-copy using an inline Python patch step against `~/.config/karabiner/karabiner.json` (idempotent cleanup of typo `com.ghotty.*` included).
