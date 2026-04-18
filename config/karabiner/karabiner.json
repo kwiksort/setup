@@ -618,7 +618,7 @@
                         ]
                     },
                     {
-                        "description": "[MX Keys FR-PC] F5 => Cmd+R (refresh)",
+                        "description": "[MX Keys FR-PC] F5 => Cmd+R (refresh), CTRL+F5 => Cmd+w (refresh)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -637,6 +637,31 @@
                                 "to": [
                                     {
                                         "key_code": "r",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "is_keyboard": true,
+                                                "product_id": 50475,
+                                                "vendor_id": 1133
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "z",
                                         "modifiers": ["command"]
                                     }
                                 ],
