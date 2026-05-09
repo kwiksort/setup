@@ -39,3 +39,4 @@
 - 2026-04-18: Updated `setup.sh` to enforce Ghostty/Terminal exceptions for both Ctrl+C and Ctrl+Z in Karabiner config after copy, including cleanup of legacy `com.ghotty.*` typo pattern.
 - 2026-04-18: Added MX Keys browser refresh shortcut in `config/karabiner/karabiner.json` mapping `f5` to `command+r`.
 - 2026-04-20: Added MX Keys delete mapping in `config/karabiner/karabiner.json` so `Shift+Suppr` (`shift+delete_forward`) sends `command+delete_or_backspace`.
+- 2026-05-09: Added global MX Keys shortcut in `config/karabiner/karabiner.json` mapping `left_command+e` to open Finder (`com.apple.finder`) and send `command+n` (Windows+E style new Finder window from any frontmost app).

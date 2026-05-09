@@ -28,3 +28,4 @@
 - `setup.sh` now enforces terminal-safe Ctrl+C/Ctrl+Z Karabiner conditions post-copy using an inline Python patch step against `~/.config/karabiner/karabiner.json` (idempotent cleanup of typo `com.ghotty.*` included).
 - Added browser refresh mapping in `config/karabiner/karabiner.json`: `f5` now sends `command+r` for the MX Keys FR-PC device rule set.
 - Added delete-word style mapping in `config/karabiner/karabiner.json`: `shift+delete_forward` (Shift+Suppr) now sends `command+delete_or_backspace`.
+- Added global MX Keys shortcut in `config/karabiner/karabiner.json`: `left_command+e` now opens Finder (`com.apple.finder`) and sends `command+n` to create a new Finder window from any frontmost app (Windows+E style).
