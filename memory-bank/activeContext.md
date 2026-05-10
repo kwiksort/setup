@@ -6,8 +6,6 @@
 
 ## Latest Change
 - Added RTK install guard in `setup.sh`:
-  - if `rtk` exists: skip
-  - else: `brew install rtk`
 
 ## Open Items
 - Evaluate `Brewfile` adoption.
