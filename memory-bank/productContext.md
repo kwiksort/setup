@@ -1,33 +1,18 @@
 # Product Context
 
-## User/Operator
-Primary operator is a developer maintaining a personal macOS environment and reusing this repository to bootstrap fresh machines quickly with consistent terminal, editor, and keyboard behavior.
+Operator: single developer maintaining a personal macOS setup.
 
-## Core Workflows
-1. **Initial machine bootstrap**
-   - Run `setup.sh` to install/update Homebrew and install key GUI apps (`1password`, `docker`, `ghostty`, `karabiner-elements`, `visual-studio-code`, etc.).
-2. **Terminal baseline setup**
-   - Ensure Starship is installed and initialized in `~/.zshrc` from `setup.sh` and `config/starship/starship.toml`.
-3. **Keyboard behavior standardization**
-   - Use `config/karabiner/karabiner.json` for MX Keys FR-PC mappings on macOS.
-4. **VS Code shortcuts alignment**
-   - `setup.sh` copies `config/vscode/keybindings.json` to VS Code user settings path automatically to align keybindings with Windows muscle memory.
-5. **Config synchronization**
-   - Keep repo-stored configs as source of truth; copy/apply them when rebuilding or refining setup.
+## Main Workflows
+- Run `setup.sh` for machine bootstrap (Homebrew, casks, fonts, shell/tool setup).
+- Apply keyboard mappings via `config/karabiner/karabiner.json`.
+- Apply VS Code keybindings from `config/vscode/keybindings.json`.
+- Keep repo configs as source of truth for re-install/refresh.
 
-## Success Criteria
-- Running `setup.sh` on macOS results in required apps and baseline shell/tooling available without manual deep debugging.
-- Re-running setup is safe enough for iterative updates (especially for Starship init and alias lines in `~/.zshrc`).
-- Keyboard mappings support expected MX Keys FR-PC behavior for navigation and common shortcuts.
-- VS Code keybindings can be applied reproducibly with backup support.
+## Success Signals
+- `setup.sh` runs on macOS without manual recovery steps.
+- Re-runs are mostly safe (guards for Starship init, alias, fonts, RTK).
+- Terminal/editor/keyboard behavior is consistent across machines.
 
-## Pain Points
-- Some steps are network-dependent and interactive (`Homebrew` install path, `curl` + `unzip` for fonts).
-- Setup is mostly idempotent but not strictly deterministic due to `brew update && brew upgrade` side effects.
-- Ghostty config copy logic in `setup.sh` is existence-based and does not merge/refresh changed templates automatically.
-- No automated verification suite currently checks end-to-end setup outcomes.
-
-## Usage Frequency
-- High during new machine onboarding.
-- Medium for occasional environment refreshes and config tweaks.
-- Low for day-to-day runtime (most files are static once applied).
+## Known Friction
+- Network + installer variability (`brew`, `curl`, `unzip`).
+- Not fully deterministic (`brew update && brew upgrade`).

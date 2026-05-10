@@ -1,46 +1,18 @@
 # System Patterns
 
-## Architecture Pattern
-The repository uses a **script + static-config** pattern:
-- `setup.sh` orchestrates install/setup actions.
-- `config/*` holds versioned configuration artifacts copied or applied to user-space paths.
+## Pattern
+- Lightweight **script + static-config** repo.
+- `setup.sh` orchestrates installs/copies.
+- `config/*` stores source-of-truth files.
 
-This is intentionally lightweight and easy to run manually without additional orchestration frameworks.
+## Idempotency Conventions (in `setup.sh`)
+- `command -v` guards (brew, starship, rtk).
+- `grep -Fxq` guards for `~/.zshrc` lines.
+- Existence/content checks before overwrite (fonts, Ghostty default config, VS Code keybindings via `cmp -s` + backup).
 
-## Configuration Strategy
-- Source-of-truth configs are kept in repo subdirectories:
-  - `config/ghostty/config`
-  - `config/karabiner/karabiner.json`
-  - `config/starship/starship.toml`
-  - `config/vscode/keybindings.json`
-- Runtime user files are created/copied into macOS home library paths by scripts.
-- `setup.sh` copies `config/karabiner/karabiner.json` to `~/.config/karabiner/karabiner.json`.
-- `setup.sh` copies `config/vscode/keybindings.json` into `${HOME}/Library/Application Support/Code/User/keybindings.json` with backup support.
+## Current Non-Strict Areas
+- `brew update && brew upgrade` always runs when brew exists.
+- Karabiner main config copy is unconditional.
 
-## Idempotency Pattern
-`setup.sh` follows defensive checks before mutating state:
-- Checks `command -v brew` before install path.
-- Checks Starship installation with `command -v starship`.
-- Uses `grep -Fxq` before appending lines to `~/.zshrc` (`eval "$(starship init zsh)"`, alias `ll`).
-- Checks font directory and existing `.ttf` files before re-downloading.
-- Checks Ghostty config path existence before copying default config.
-- Compares VS Code keybindings source/destination with `cmp -s`, skips when identical, and creates timestamped backup before overwriting changes.
-
-Non-idempotent/more direct areas:
-- Karabiner config copy is currently unconditional (`cp config/karabiner/karabiner.json $HOME/.config/karabiner/karabiner.json`) and has no backup/skip guard.
-
-Partial non-idempotent areas remain by design:
-- When Homebrew already exists, script still runs `brew update && brew upgrade`.
-- Cask install command may still trigger package-level updates depending on brew state.
-
-## Environment Assumptions
-- Host OS is macOS (paths and app targets are macOS-specific).
-- Default shell context supports Bash script execution.
-- Operator has permissions/network access to install Homebrew casks and download fonts.
-- User home directory conventions (`$HOME`, `~/Library/...`, `~/.config`) are available.
-
-## Risk Areas
-- External URLs (Homebrew install script and Nerd Fonts release asset) can change or fail.
-- App bundle identifiers and key codes in Karabiner rules may need updates with app/OS changes.
-- Running bootstrap on pre-customized machines can create drift between repo templates and local files.
-- JSON/TOML config validation is mostly implicit (no CI linter in repo).
+## macOS Assumptions
+- Uses macOS paths under `~/Library/...` and `~/.config/...`.

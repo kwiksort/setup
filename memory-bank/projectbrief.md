@@ -1,26 +1,19 @@
 # Project Brief
 
-## Project Summary
-This repository (`/Users/julien/Library/Mobile Documents/com~apple~CloudDocs/dev/setup`) is a macOS workstation bootstrap and configuration repo centered on `setup.sh` plus reusable app config assets under `config/`.
+macOS bootstrap repo driven by `setup.sh` + versioned config files in `config/`.
 
-## Primary Goals
-- Provide a mostly one-command baseline machine setup via `setup.sh`.
-- Keep core tool configuration versioned in this repo (`config/ghostty`, `config/karabiner`, `config/starship`, `config/vscode`).
-- Preserve idempotent behavior where possible (skip already-installed tools/config entries rather than breaking existing environments).
-- Support a French PC external keyboard workflow on macOS through Karabiner mappings.
+## Goals
+- One-command baseline machine setup (`setup.sh`).
+- Keep terminal/editor/keyboard configs in git (`config/ghostty`, `config/karabiner`, `config/starship`, `config/vscode`).
+- Prefer idempotent checks when possible (skip if already installed/configured).
 
-## Out of Scope
-- Full declarative system management (Nix, Ansible, etc.).
-- Cross-platform provisioning (Linux/Windows); this repo is macOS-focused.
-- Managing every app preference file on the machine.
-- Automated test harness for interactive installer behavior.
+## Scope Boundaries
+- macOS only.
+- No full infra management (Nix/Ansible) and no full test harness.
 
-## Repository Layout
-- `setup.sh`: main bootstrap script (Homebrew, casks, fonts, Ghostty/Starship setup, shell alias/init).
-- `config/ghostty/config`: Ghostty user config template used for copy into `~/Library/Application Support/com.mitchellh.ghostty/config`.
-- `config/karabiner/karabiner.json`: Karabiner rule set now copied directly by `setup.sh` to `~/.config/karabiner/karabiner.json`.
-- `config/starship/starship.toml`: minimal Starship prompt config (`format = '$all'`).
-- `config/vscode/keybindings.json`: VS Code keybindings source tracked in repo.
-
-## Operational Context
-The repository is used during new machine setup and later for iterative refinement of personal developer environment defaults. Current behavior prioritizes practicality over full strict idempotency; many operations are conditionally skipped, but some install/update actions still execute each run (for example `brew update && brew upgrade` when Homebrew is present).
+## Key Files
+- `setup.sh`
+- `config/ghostty/config`
+- `config/karabiner/karabiner.json`
+- `config/starship/starship.toml`
+- `config/vscode/keybindings.json`

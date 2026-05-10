@@ -23,6 +23,7 @@ brew install --cask \
     ghostty \
     karabiner-elements \
     mos \
+    rtk \
     stats \
     thaw \
     visual-studio-code
